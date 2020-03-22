@@ -6,6 +6,7 @@ import phonenumbers
 
 
 def fix_phonenumbers(apps, schema_editor):
+    owner = apps.get_model('Owner')
     for flat in Flat.objects.all():
         owners_phonenumber_parse = phonenumbers.parse(flat.owners_phonenumber, 'RU')
         if not phonenumbers.is_valid_number(owners_phonenumber_parse):
